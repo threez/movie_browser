@@ -18,8 +18,8 @@ class Movie < ActiveRecord::Base
   end
   
   def image_path
-    #{}"http://www.cinebank.de/fol/LOCANDINE/#{self.movie_id}.jpg"
-    "/images/#{self.movie_id}.jpg"
+    "http://www.cinebank.de/fol/LOCANDINE/#{self.movie_id}.jpg"
+    # "/images/#{self.movie_id}.jpg"
   end
 end
 
