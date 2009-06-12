@@ -1,7 +1,6 @@
 require "rubygems"
 require "sinatra"
 require "db"
-#customer_id = "09937032006000"
 
 configure do
   set :sessions, true
