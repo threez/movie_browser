@@ -1,10 +1,11 @@
 require 'rubygems'
-require 'vendor/sinatra/lib/sinatra.rb'
+require 'sinatra.rb'
 
-Sinatra::Application.default_options.merge!(
-  :run => false,
-  :env => :production
-)
+root_dir = File.dirname(__FILE__)
 
-require 'webserver.rb'
-run Sinatra.application
+set :environment, (ENV['RACK_ENV'] || 'production').to_sym
+set :root,        root_dir
+disable :run
+require File.join(root_dir, 'webserver.rb')
+
+run Sinatra::Application

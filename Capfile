@@ -9,7 +9,7 @@ set :use_sudo, false
  
 set :repository, "git://github.com/threez/movie_browser.git"
  
-set :deploy_to, "/home/vlandgraf/movie-ruby-consult"
+set :deploy_to, "/var/www/movie-ruby-consult"
 set :deploy_via, :remote_cache
  
 set :domain, 'movie.ruby-consult.de'
