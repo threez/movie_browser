@@ -1,0 +1,8 @@
+<div id="movies">
+	<% for movie in @movies do %>
+	<a class="movie" href="/show/<%= movie.id %>">
+		<img src="<%= movie.image_path %>" />
+		<span class="title"><%= movie.title %></span>
+	</a>
+	<% end %>
+</div>

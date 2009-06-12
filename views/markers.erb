@@ -1,0 +1,19 @@
+<h2>Noch nicht gesehen</h2>
+<div id="movies">
+	<% for movie in @not_seen do %>
+	<a class="movie" href="/show/<%= movie.id %>">
+		<img src="<%= movie.image_path %>" />
+		<span class="title"><%= movie.title %></span>
+	</a>
+	<% end %>
+</div>	
+<div style="clear: both;"></div>
+<h2>Bereits gesehen</h2>
+<div id="movies">
+	<% for movie in @seen do %>
+	<a class="movie" href="/show/<%= movie.id %>">
+		<img src="<%= movie.image_path %>" />
+		<span class="title"><%= movie.title %></span>
+	</a>
+	<% end %>
+</div>

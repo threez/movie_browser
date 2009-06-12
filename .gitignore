@@ -1,0 +1,4 @@
+movie.db*
+public/images
+config.yml
+*.DS_Store

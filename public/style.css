@@ -1,0 +1,155 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	color: #222;
+	font-family: Verdana;
+	font-size: 10pt;
+}
+
+img {
+	border: 0px;
+}
+
+#container {
+	margin: 0 auto;
+	width: 910px;
+	background-color: #efefef;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 20px;
+	padding-right: 0px;
+	padding-bottom: 40px;
+}
+
+.movie {
+	float: left;
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	width: 140px;
+	height: 230px;
+	text-decoration: none;
+	color: #222;
+}
+
+.movie:hover {
+	border-color: black;
+}
+
+.movie-red {
+	background-color: #671414;
+}
+
+.title {
+	display: block;
+	text-align: center;
+}
+
+#search {
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 10px;
+	float: right;
+	margin-top: 15px;
+	margin-right: 20px;
+}
+
+#menu {
+	margin: 0;
+	padding: 0;
+}
+
+#menu li {
+	float: left;
+	list-style: none;
+}
+
+#menu li a {	
+	display: block;
+	background: white;
+	padding: 5px 12px;
+	text-decoration: none;
+	text-align: center;
+	width: 272px;
+	white-space: nowrap;
+	color: #222;
+	font-weight: bold;
+}
+
+#menu li a:hover {
+	background: #efefef;
+}
+		
+#menu li ul{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	visibility: hidden;
+	border: 1px solid #ccc;
+}
+
+#menu li ul li{
+	float: none;
+	display: inline;
+}
+			
+#menu li ul li a {
+	width: auto;
+	background: white;
+	color: #222
+}
+			
+#menu li ul li a:hover	{
+	background: #efefef
+}
+
+#navigation {
+	background-color: white;
+	border: 1px solid #ccc;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+label {
+	font-weight: bold;
+	display: inline-block;
+	width: 250px;
+}
+
+#movie-meta-data p {
+	margin: 3px;
+}
+
+#movie-header {
+	padding: 20px;
+	background-color: white;
+	border: 1px solid #ccc;
+	margin-right: 20px;
+}
+
+#movie-header img {
+	padding: 20px;
+	margin-right: 20px;
+	float: left;
+}
+
+#movie-description {
+	margin-top: 20px;
+	padding: 20px;
+	background-color: white;
+	border: 1px solid #ccc;
+	margin-right: 20px;
+	font-size: 1.2em;
+}
+
+#user-controls {
+	position: relative;
+	top: -20px;
+}
+
+#user-controls a{
+	color: #222;
+}

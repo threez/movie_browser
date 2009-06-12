@@ -1,0 +1,65 @@
+<div id="movie-header">
+	<img src="<%= @movie.image_path %>" />
+
+	<h2><%= @movie.title %></h2>
+
+	<div id="movie-meta-data">
+<% if @movie.age && @movie.age > 0 %>
+		<p>
+			<label for="age">Altersfreigabe:</label>
+			<span id="age"><%= @movie.age %> Jahre</span>
+		</p>
+<% end %>
+		<p>
+			<label for="genre">Genre:</label>
+			<span id="genre"><a href="/genre/<%= @movie.genre.id %>"><%= @movie.genre.name %></a></span>
+		</p>
+<% if @movie.year && @movie.year > 0 %>
+		<p>
+			<label for="year">Produktionsjahr:</label>
+			<span id="year"><%= @movie.year %></span>
+		</p>
+<% end %>
+		<p>
+			<label for="regisseur">Regisseur:</label>
+			<span id="regisseur"><%= @movie.regisseur %></span>
+		</p>
+<% if @movie.actors %>
+		<p>
+			<label for="actors">Darsteller:</label>
+			<span id="actors">
+				<%= @movie.actors.split(",").map { |actor|
+					"<a href=\"/search?name=#{actor}\">#{actor}</a>"
+				}.join(", ") %>
+			</span>
+		</p>
+<% end %>
+		<p>
+			<label for="producer">Vertrieb:</label>
+			<span id="producer"><%= @movie.producer %></span>
+		</p>
+		<p>
+			<label for="duration">Laufzeit:</label>
+			<span id="duration"><%= @movie.duration %> Minuten</span>
+		</p>
+	</div>
+<% if @user %>
+	<div>
+<% if @marker.nil? || @marker.category.nil? %>		
+		<input type="button" value="Vormerken" onClick="mark('not_seen', <%= @movie.id %>)"/>
+		<input type="button" value="als gesehen makieren" onClick="mark('seen', <%= @movie.id %>)"/>
+<% elsif @marker.category == :not_seen %>
+		<input type="button" value="Vormerkung entfernen" onClick="unmark(<%= @marker.id %>)"/>
+		<input type="button" value="als gesehen makieren" onClick="mark('seen', <%= @movie.id %>)"/>
+<% elsif @marker.category == :seen %>
+		<input type="button" value="gesehen Makierung entfernen" onClick="unmark(<%= @marker.id %>)"/>
+<% end %>
+		<!--<input type="button" value="Reservieren" onClick="reserve(<%= @movie.id %>)"/>-->
+	</div>
+<% end %>
+	<div style="clear: both;"></div>
+</div>
+
+<div id="movie-description">
+	<%= @movie.description %>
+</div>
