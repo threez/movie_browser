@@ -3,6 +3,7 @@ load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 set :application, "movie.ruby-consult.de" 
 set :scm, :git
 set :branch, 'master'
+set :user, 'vlandgraf'
 set :use_sudo, false
  
 set :repository, "git@github.com:threez/movie_browser.git"
