@@ -19,7 +19,6 @@ class Movie < ActiveRecord::Base
   
   def image_path
     "http://www.cinebank.de/fol/LOCANDINE/#{self.movie_id}.jpg"
-    # "/images/#{self.movie_id}.jpg"
   end
 end
 
@@ -43,7 +42,18 @@ class User < ActiveRecord::Base
   end
   
   def mark(category, movie_id)
+    # remove not seen marker if :seen is going to be set
+    if category == :seen and (marker = find_mark(:not_seen, movie_id)) then 
+      unmark(marker.id)
+    end 
     markers.create(:category => category, :movie_id => movie_id)
+  end
+  
+  def find_mark(category, movie_id)
+    markers.find(:first, :conditions => {
+      :category => Marker::CATEGORYS[category], 
+      :movie_id => movie_id}
+    )
   end
   
   def unmark(marker_id)
