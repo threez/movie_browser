@@ -105,18 +105,35 @@ class FilmOnline
     end
     movies
   end
+  
+  # AKTUELL (dvd, blue ray, hardcore dvd)
+  #  "Neuerscheinungen" => :aktuell_1,
+  #  "Topfilme" => :aktuell_2,
+  #  "Gesamtliste" => :aktuell_3,
+  #  "Verfügbar, nicht gesehen" => :aktuell_6,
+  def self.all_movies
+    movies = []
+    movies += query_all(:dvd, :aktuell_3)
+    movies += query_all(:blue_ray, :aktuell_3)
+    movies += query_all(:hardcore_dvd, :aktuell_3)
+    movies
+  end
 end
 
-# AKTUELL (dvd, blue ray, hardcore dvd)
-#  "Neuerscheinungen" => :aktuell_1,
-#  "Topfilme" => :aktuell_2,
-#  "Gesamtliste" => :aktuell_3,
-#  "Verfügbar, nicht gesehen" => :aktuell_6,
-
-movies = []
-movies += FilmOnline.query_all(:dvd, :aktuell_3)
-movies += FilmOnline.query_all(:blue_ray, :aktuell_3)
-movies += FilmOnline.query_all(:hardcore_dvd, :aktuell_3)
-movies.each do |movie|
-  movie.save
+if __FILE__ == $0 then
+  case ARGV.shift
+    when /import/
+      movies = FilmOnline.all_movies
+      movies.each { |movie| movie.save }
+    when /sync/
+      movies = FilmOnline.all_movies
+      movies.each do |movie|
+        # add missing movies
+        unless Movie.find(:first, :conditions => { :title => movie.title, :genre_id => movie.genre_id })
+          movie.save
+        end
+      end
+    else
+      puts "usage: #{$0} <import|sync>"
+  end
 end
