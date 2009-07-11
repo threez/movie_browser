@@ -26,6 +26,7 @@
 			</form>	
 			<h1>Movie Browser <%= "- " + @title if @title %></h1>
 			<div id="user-controls">
+				<a href="/newest">Neuerscheinungen</a> |
 				<% unless @user %>
 				<a href="/user/login">Login</a>
 				<% else %>

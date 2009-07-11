@@ -102,6 +102,7 @@ if __FILE__ == $0 && ARGV.shift == "create" then
       t.integer :audio
       t.string :regisseur
       t.text :actors
+      t.timestamps
     end
 
     create_table :genres do |t|

@@ -17,6 +17,13 @@ get "/" do
   redirect "/genre/" + Genre.find(:first).id.to_s
 end
 
+get "/newest" do
+  year = Time.now.year
+  @title = "Neuerscheinungen #{year}"
+  @movies = Movie.find_all_by_year(year, :order => "created_at DESC")
+  erb :index
+end
+
 get "/genre/:id" do
   @genre = Genre.find(params[:id], :include => :movies)
   @title = "Genre #{@genre.name}"
