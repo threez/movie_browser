@@ -4,7 +4,7 @@
 # http://en.wikipedia.org/wiki/Cron
 
 # Example:
-set :path, File.expand_path(File.join('..', File.dirname(__FILE__)))
+set :path, File.expand_path(File.join(File.dirname(__FILE__)))
 set :cron_log, "#{path}/log/cron_log.log"
 
 every 1.hours do
