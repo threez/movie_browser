@@ -20,7 +20,7 @@ end
 get "/newest" do
   year = Time.now.year
   @title = "Neuerscheinungen #{year}"
-  @movies = Movie.find_all_by_year(year, :order => "created_at DESC")
+  @movies = Movie.find_all_by_year(year, :order => "created_at DESC, genre_id")
   erb :index
 end
 
