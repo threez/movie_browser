@@ -19,7 +19,7 @@ class Movie < ActiveRecord::Base
   end
   
   def guid
-    MD5.md5("http://movie.ruby-consult.de/show/%d" % movie.id).to_s
+    MD5.md5("http://movie.ruby-consult.de/show/%d" % self.id).to_s
   end
   
   def self.newest
