@@ -1,6 +1,7 @@
 require "rubygems"
 require "activerecord"
 require "yaml"
+require "md5"
 
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.colorize_logging = true
@@ -15,6 +16,14 @@ class Movie < ActiveRecord::Base
   
   def color
     self.available ? 'green' : 'red'
+  end
+  
+  def guid
+    MD5.md5("http://movie.ruby-consult.de/show/%d" % movie.id)
+  end
+  
+  def self.newest
+    find_all_by_year(year, :order => "created_at DESC, genre_id")
   end
   
   def image_path

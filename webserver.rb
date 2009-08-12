@@ -1,6 +1,7 @@
 require "rubygems"
 require "sinatra"
 require "db"
+require "time"
 
 configure do
   set :sessions, true
@@ -20,8 +21,15 @@ end
 get "/newest" do
   year = Time.now.year
   @title = "Neuerscheinungen #{year}"
-  @movies = Movie.find_all_by_year(year, :order => "created_at DESC, genre_id")
+  @movies = Movie.newest
   erb :index
+end
+
+get "/feed.xml" do
+  content_type "application/rss+xml"
+  year = Time.now.year
+  @movies = Movie.newest
+  erb :rss, :layout => none
 end
 
 get "/genre/:id" do

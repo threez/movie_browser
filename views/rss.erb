@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<rss version="2.0">
+  <channel>
+    <title>MovieBrowser Neuerscheinungen</title>
+    <link>http://movie.ruby-consult.de/</link>
+    <description>CineBank Movie Datenbank</description>
+    <language>de-de</language>
+    <copyright>none</copyright>
+    <pubDate><%= Time.now.rfc822 %></pubDate>
+ 
+	<% for movie in @movies do %>
+    <item>
+      <title><%= movie.title %></title>
+      <description>
+		<![CDATA[
+		<img src="<%= @movie.image_path %>" />
+		<%= movie.description %>
+		]]>
+	  </description>
+      <link>http://movie.ruby-consult.de/show/<%= movie.id %></link>
+      <author><%= @movie.producer %>, <%= @movie.regisseur %></author>
+      <guid><%= movie.guid %></guid>
+      <pubDate><%= movie.created_at %></pubDate>
+    </item>
+	<% end %>
+  </channel>
+</rss>
