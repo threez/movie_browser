@@ -14,12 +14,12 @@
       <title><%= movie.title %></title>
       <description>
 		<![CDATA[
-		<img src="<%= @movie.image_path %>" />
+		<img src="<%= movie.image_path %>" />
 		<%= movie.description %>
 		]]>
 	  </description>
       <link>http://movie.ruby-consult.de/show/<%= movie.id %></link>
-      <author><%= @movie.producer %>, <%= @movie.regisseur %></author>
+      <author><%= movie.producer %>, <%= movie.regisseur %></author>
       <guid><%= movie.guid %></guid>
       <pubDate><%= movie.created_at %></pubDate>
     </item>
