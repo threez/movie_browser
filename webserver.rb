@@ -19,7 +19,6 @@ get "/" do
 end
 
 get "/newest" do
-  year = Time.now.year
   @title = "Neuerscheinungen #{year}"
   @movies = Movie.newest
   erb :index
@@ -27,7 +26,6 @@ end
 
 get "/feed.xml" do
   content_type "application/rss+xml"
-  year = Time.now.year
   @movies = Movie.newest
   erb :rss, :layout => none
 end

@@ -19,10 +19,11 @@ class Movie < ActiveRecord::Base
   end
   
   def guid
-    MD5.md5("http://movie.ruby-consult.de/show/%d" % movie.id)
+    MD5.md5("http://movie.ruby-consult.de/show/%d" % movie.id).to_s
   end
   
   def self.newest
+    year = Time.now.year
     find_all_by_year(year, :order => "created_at DESC, genre_id")
   end
   
