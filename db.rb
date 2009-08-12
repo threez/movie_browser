@@ -18,10 +18,6 @@ class Movie < ActiveRecord::Base
     self.available ? 'green' : 'red'
   end
   
-  def guid
-    MD5.md5("http://movie.ruby-consult.de/show/%d" % self.id).to_s
-  end
-  
   def self.newest
     year = Time.now.year
     find_all_by_year(year, :order => "created_at DESC, genre_id")

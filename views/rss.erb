@@ -20,7 +20,7 @@
 	  </description>
       <link>http://movie.ruby-consult.de/show/<%= movie.id %></link>
       <author><%= movie.producer %>, <%= movie.regisseur %></author>
-      <guid><%= movie.guid %></guid>
+      <guid>show/<%= movie.id %></guid>
       <pubDate><%= movie.created_at %></pubDate>
     </item>
 	<% end %>
