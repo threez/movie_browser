@@ -27,7 +27,7 @@ end
 get "/feed.xml" do
   content_type "application/rss+xml"
   @movies = Movie.newest
-  erb :rss, :layout => none
+  erb :rss, :layout => :none
 end
 
 get "/genre/:id" do
