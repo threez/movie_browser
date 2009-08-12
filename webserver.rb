@@ -19,7 +19,7 @@ get "/" do
 end
 
 get "/newest" do
-  @title = "Neuerscheinungen #{year}"
+  @title = "Neuerscheinungen #{Time.now.year}"
   @movies = Movie.newest
   erb :index
 end
